@@ -17,6 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('obterlista', 'InstituicaoController@index');
-Route::get('obterlista', 'ConvenioController@index');
-Route::post('simularcreditodisponivel/{valoremprestimo}/{instituicoes?}/{convenios?}/{parcela?}', 'SimulacaoController@index');
+Route::get('/instituicao/obterlista', 'InstituicaoController@obterLista');
+Route::get('/convenio/obterlista', 'ConvenioController@obterLista');
+Route::post('/simulacao/creditodisponivel/{valoremprestimo}/{instituicoes?}/{convenios?}/{parcela?}', 'SimulacaoController@simularCreditoDisponivel');
