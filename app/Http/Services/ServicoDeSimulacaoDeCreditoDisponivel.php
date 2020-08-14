@@ -39,6 +39,12 @@ class ServicoDeSimulacaoDeCreditoDisponivel
                                        && $instituicaoTaxa->convenio == $convenio
                                        && !in_array($instituicaoTaxa->parcelas, array_column($instituicaoConvenios, 'parcelas')))
                                        {
+                                            if(isset($request['parcelas']))                                 
+                                            {
+                                                if($request['parcelas'] != $instituicaoTaxa->parcelas)
+                                                    continue;
+                                            }
+
                                             $instituicaoConvenio->taxa = $instituicaoTaxa->taxaJuros;
                                             $instituicaoConvenio->parcelas = $instituicaoTaxa->parcelas;
                                             $instituicaoConvenio->valor_parcela = round(floatval($request['valor_emprestimo']) * $instituicaoTaxa->coeficiente, 2);
@@ -50,6 +56,7 @@ class ServicoDeSimulacaoDeCreditoDisponivel
                             }
                         }
                     }
+                    
                     if(!in_array($instituicao, array_column($resultadoSimulacao, null, 0)))
                     {
                         $instituicaoData = new \stdClass();
