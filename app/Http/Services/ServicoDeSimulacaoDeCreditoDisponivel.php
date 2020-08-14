@@ -17,6 +17,9 @@ class ServicoDeSimulacaoDeCreditoDisponivel
         $instituicaoTaxas = $this->servicoDeInstituicaoTaxa->ObterLista();
         $resultadoSimulacao = array();
 
+        if(!isset($request['valor_emprestimo']))
+            return "Preenchimento Obrigatório valor_emprestimo";
+
         if(isset($request['instituicoes']))
         {
             foreach($request['instituicoes'] as $instituicao)
@@ -56,7 +59,7 @@ class ServicoDeSimulacaoDeCreditoDisponivel
                             }
                         }
                     }
-                    
+
                     if(!in_array($instituicao, array_column($resultadoSimulacao, null, 0)))
                     {
                         $instituicaoData = new \stdClass();
