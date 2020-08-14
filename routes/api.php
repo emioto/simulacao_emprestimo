@@ -19,4 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('/instituicao/obterlista', 'InstituicaoController@obterLista');
 Route::get('/convenio/obterlista', 'ConvenioController@obterLista');
-Route::post('/simulacao/creditodisponivel/{valoremprestimo}/{instituicoes?}/{convenios?}/{parcela?}', 'SimulacaoController@simularCreditoDisponivel');
+Route::post('/simulacao/creditodisponivel', 'SimulacaoCreditoDisponivelController@simularCreditoDisponivel');
